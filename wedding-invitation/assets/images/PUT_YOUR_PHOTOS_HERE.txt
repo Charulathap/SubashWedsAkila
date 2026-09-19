@@ -1,0 +1,4 @@
+Drop your gallery photos in this folder (e.g. couple-1.jpg, couple-2.jpg, venue-1.jpg).
+
+Then in index.html, inside <div class="gallery-track">, change the <img src="...">
+values from the Unsplash placeholder URLs to "assets/images/your-photo-name.jpg".
