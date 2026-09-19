@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Marcellus&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
 
 <body>
@@ -28,15 +28,16 @@
   <!-- ENVELOPE SCREEN -->
   <div id="envelopeScreen">
     <div class="envelope-wrap" id="envelopeTap">
+      <div style="margin-bottom: 40px; padding: 0 20px;">
+        <span
+          style="font-size: 1.5rem; text-transform:none; letter-spacing:1.5px; color:#f6e1a8; line-height: 1.4; display:block;">A
+          beautiful beginning to a lifetime of love and togetherness</span>
+      </div>
       <div class="envelope">
-        <div class="envelope-flap" id="envelopeFlap"></div>
         <div class="seal" id="seal">S ❤ A</div>
       </div>
-      <div class="tap-text" style="display:flex; flex-direction:column; gap:10px;">
-        <span
-          style="font-family:'Great Vibes', cursive; font-size: 2.6rem; text-transform:none; letter-spacing:1px; color:#f6e1a8; animation: none;">A
-          beautiful beginning to a lifetime of love and togetherness</span>
-        <span style="font-size: 0.95rem; opacity: 0.8; letter-spacing: 3px; margin-top:5px;">✧ Tap to Open ✧</span>
+      <div class="tap-text">
+        <span style="font-size: 0.95rem; opacity: 0.8; letter-spacing: 3px;">✧ Tap to Open ✧</span>
       </div>
     </div>
   </div>
@@ -255,18 +256,10 @@
     <section>
       <h2 class="gold-text">Contact</h2>
       <div class="pill-row">
-        <a class="pill" href="tel:+919042387377">📞 Call Bride (Akila)</a>
-        <a class="pill" href="tel:+919080987186">📞 Call Bride (Alt)</a>
-        <a class="pill" href="tel:+918098440756">📞 Call Groom (Subash)</a>
-        <a class="pill"
-          href="https://wa.me/919042387377?text=Thank%20you%20so%20much%20for%20your%20love%20and%20blessings!%20-%20Subash%20%26%20Akila">💬
-          WhatsApp Bride</a>
-        <a class="pill"
-          href="https://wa.me/918098440756?text=Thank%20you%20so%20much%20for%20your%20love%20and%20blessings!%20-%20Subash%20%26%20Akila">💬
-          WhatsApp Groom</a>
-        <a class="pill"
-          href="https://wa.me/919965174931?text=Thank%20you%20so%20much%20for%20your%20love%20and%20blessings!%20-%20Subash%20%26%20Akila">💬
-          WhatsApp Groom (Alt)</a>
+        <a class="pill" href="tel:+917868999367">📞 Call Bride (Akila)</a>
+        <a class="pill" href="tel:+919952768800">📞 Call Groom (Subash)</a>
+
+
       </div>
     </section>
 
@@ -285,25 +278,33 @@
   <!-- WhatsApp Modal -->
   <div id="waModal"
     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:1000; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column; padding:15px; backdrop-filter:blur(5px);">
-    <div class="glass" style="max-width: 600px; width: 100%; max-height: 90vh; padding: 25px 20px; border-radius: 20px; position: relative; display: flex; flex-direction: column;">
+    <div class="glass"
+      style="max-width: 600px; width: 100%; max-height: 90vh; padding: 25px 20px; border-radius: 20px; position: relative; display: flex; flex-direction: column;">
       <button id="waClose"
         style="position:absolute; top:15px; right:20px; background:none; border:none; color:var(--gold-light); font-size:2rem; cursor:pointer; line-height:1; z-index: 10;">&times;</button>
-      <h3 class="gold-text serif-title" style="margin-bottom: 10px; text-align: center; font-size:1.6rem; flex-shrink: 0;">Send a Blessing</h3>
-      <p style="text-align:center; margin-bottom: 15px; font-size: 0.9rem; opacity:0.9; flex-shrink: 0;">Choose a quote or write your own custom message:</p>
+      <h3 class="gold-text serif-title"
+        style="margin-bottom: 10px; text-align: center; font-size:1.6rem; flex-shrink: 0;">Send a Blessing</h3>
+      <p style="text-align:center; margin-bottom: 15px; font-size: 0.9rem; opacity:0.9; flex-shrink: 0;">Choose a quote
+        or write your own custom message:</p>
 
       <div
         style="display:flex; flex-direction:column; gap:8px; overflow-y: auto; margin-bottom:15px; padding-right:5px; flex: 1; min-height: 0;"
         id="waQuoteList">
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Two souls with but a single thought, two hearts that beat as one."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Two
+          souls with but a single thought, two hearts that beat as one."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May the love you share today grow stronger as you grow old together."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May
+          the love you share today grow stronger as you grow old together."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"A successful marriage requires falling in love many times, always with the same person."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"A
+          successful marriage requires falling in love many times, always with the same person."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May your love story be as magical as your wedding day, and your blessings multiply each year."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May
+          your love story be as magical as your wedding day, and your blessings multiply each year."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Once in a while, right in the middle of an ordinary life, love gives us a fairy tale."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Once
+          in a while, right in the middle of an ordinary life, love gives us a fairy tale."</button>
       </div>
 
       <textarea id="waCustomMsg" placeholder="Or type a custom message here..."
@@ -324,7 +325,7 @@
   <div id="scrollProgress"></div>
   <button id="musicBtn" title="Play/Pause Music">🎵</button>
 
-  <script src="assets/js/script.js?v=5"></script>
+  <script src="assets/js/script.js?v=6"></script>
 </body>
 
 </html>

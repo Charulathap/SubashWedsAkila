@@ -77,14 +77,13 @@ function spawnPetals(count){
 
 envelopeTap.addEventListener('click', ()=>{
   seal.classList.add('break');
-  document.getElementById('envelopeFlap').classList.add('open');
   bgMusic.play().catch(()=>{});
   setTimeout(()=>{
     envelopeScreen.classList.add('hide');
     main.classList.add('show');
     spawnPetals(30);
     document.body.style.overflow='auto';
-  }, 1000); // Wait longer for the flap to visually open
+  }, 700);
 });
 
 /* ---------- Scroll reveal ---------- */
