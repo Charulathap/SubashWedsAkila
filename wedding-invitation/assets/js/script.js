@@ -83,9 +83,7 @@ function spawnPetals(count){
 
 envelopeTap.addEventListener('click', ()=>{
   seal.classList.add('break');
-  bgMusic.play().then(()=>{
-    document.getElementById('musicBtn').classList.remove('muted');
-  }).catch(()=>{});
+  bgMusic.play().catch(()=>{});
   setTimeout(()=>{
     window.scrollTo(0, 0);
     envelopeScreen.classList.add('hide');
@@ -148,24 +146,9 @@ setInterval(()=>{
   else{ track.scrollBy({left:296, behavior:'smooth'}); }
 }, 3500);
 
-/* ---------- Music control ---------- */
-const musicBtn = document.getElementById('musicBtn');
-musicBtn.classList.add('muted'); // initially muted until played
-musicBtn.addEventListener('click', ()=>{
-  if(bgMusic.paused){ 
-    bgMusic.play().catch(()=>{}); 
-    musicBtn.classList.remove('muted'); 
-  } else { 
-    bgMusic.pause(); 
-    musicBtn.classList.add('muted'); 
-  }
-});
-
 // Attempt to play music automatically when the page loads
 window.addEventListener('load', ()=>{
-  bgMusic.play().then(()=>{
-    musicBtn.classList.remove('muted');
-  }).catch(()=>{
+  bgMusic.play().catch(()=>{
     // Browsers block autoplay unless the user has interacted.
     console.log("Autoplay blocked. User interaction required.");
   });

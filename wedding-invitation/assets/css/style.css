@@ -109,12 +109,12 @@ section{position:relative; padding:15px 20px; max-width:1100px; margin:0 auto; t
 /* Scroll Indicator */
 .scroll-indicator {
   position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px;
+  display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px;
   color: #241708; background: linear-gradient(120deg,#e6c583,#b98a3f);
-  padding: 12px 26px; border-radius: 30px;
+  padding: 10px 24px; border-radius: 30px; white-space: nowrap;
   box-shadow: 0 4px 15px rgba(212,175,106,0.3);
   animation: bounce 2s infinite; font-family: 'Marcellus', serif;
-  font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
   z-index: 45; transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .scroll-indicator.hide { opacity: 0; visibility: hidden; }
@@ -181,11 +181,6 @@ section{position:relative; padding:15px 20px; max-width:1100px; margin:0 auto; t
 .family-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:15px;}
 .family-card{padding:26px;}
 
-/* Music button */
-#musicBtn{position:fixed; bottom:24px; right:24px; z-index:60; width:56px; height:56px; border-radius:50%; background:linear-gradient(120deg,#e6c583,#b98a3f); border:none; font-size:1.4rem; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,0.4); transition:transform 0.3s ease; display:flex; align-items:center; justify-content:center;}
-#musicBtn:hover{transform:scale(1.1);}
-#musicBtn::after{content:'';position:absolute;top:50%;left:22%;right:22%;height:3px;background:#241708;transform:translateY(-50%) rotate(45deg);opacity:0;transition:opacity 0.3s ease;pointer-events:none;}
-#musicBtn.muted::after{opacity:1;}
 #scrollProgress{position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#b98a3f,#f6e1a8,#d4af6a); z-index:70; width:0%; box-shadow:0 0 10px rgba(243,217,164,0.7);}
 
 /* Sparkle cursor trail */
@@ -218,4 +213,9 @@ footer{padding:15px 20px; text-align:center; position:relative; z-index:2;}
 #ending h2{font-size:clamp(2rem,6vw,3.5rem); color:var(--gold-light); text-align:center; padding:0 20px;}
 .firework{position:absolute; border-radius:50%; pointer-events:none;}
 
-@media(max-width:600px){ section{padding:15px 16px;} .cd-box{width:80px; padding:14px 0;} .cd-num{font-size:1.8rem;} }
+@media(max-width:600px){ 
+  section{padding:15px 16px;} 
+  .cd-box{width:80px; padding:14px 0;} 
+  .cd-num{font-size:1.8rem;} 
+  .scroll-indicator{padding: 10px 20px; font-size: 0.75rem; bottom: 30px;}
+}
