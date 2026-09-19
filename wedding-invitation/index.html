@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Marcellus&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="assets/css/style.css?v=8">
 </head>
 
 <body>
@@ -21,8 +21,11 @@
   <div class="vignette"></div>
   <div class="grain"></div>
 
-  <audio id="bgMusic" loop preload="none">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8e70c5387.mp3" type="audio/mpeg">
+  <audio id="bgMusic" loop preload="auto">
+    <!-- Reliable public domain wedding music (Canon in D) -->
+    <source src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Canon_in_D_Major_-_Kevin_MacLeod.ogg"
+      type="audio/ogg">
+    <source src="assets/audio/wedding-music.mp3" type="audio/mpeg"> <!-- Local fallback if you add your own -->
   </audio>
 
   <!-- ENVELOPE SCREEN -->
@@ -59,6 +62,10 @@
         <div class="gate">💍✨🌸</div>
         <div class="intro-caption gold-text">You are warmly invited</div>
         <div class="deco-row">🪷 💐 🕯️ 💐 🪷</div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="arrow">↓</div>
       </div>
     </section>
 
@@ -170,11 +177,9 @@
         <div class="line right"></div>
       </div>
       <div class="gallery-track" id="galleryTrack">
-        <img src="assets/images/image1.png" alt="couple">
-        <img src="assets/images/image4.png" alt="wedding">
-        <img src="assets/images/image3.png" alt="rings">
-        <img src="assets/images/image2.png" alt="decor">
-
+        <img src="assets/images/image2.jpeg" alt=" wedding">
+        <img src="assets/images/image1.png" alt=" wedding">
+        <img src="assets/images/image3.jpeg" alt=" wedding">
       </div>
     </section>
     <div id="lightbox"><img id="lightboxImg" src=""></div>
@@ -325,7 +330,7 @@
   <div id="scrollProgress"></div>
   <button id="musicBtn" title="Play/Pause Music">🎵</button>
 
-  <script src="assets/js/script.js?v=6"></script>
+  <script src="assets/js/script.js?v=9"></script>
 </body>
 
 </html>

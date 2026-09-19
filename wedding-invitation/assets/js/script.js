@@ -47,7 +47,13 @@ function drawFlies(){
 resizeCanvases(); initStars(); initFlies(); drawStars(); drawFlies();
 window.addEventListener('resize', ()=>{resizeCanvases(); initStars(); initFlies();});
 
-/* ---------- Envelope open ---------- */
+// Prevent browser from restoring previous scroll position on refresh
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+/* ---------- Envelope Animation ---------- */
 const envelopeTap = document.getElementById('envelopeTap');
 const envelopeScreen = document.getElementById('envelopeScreen');
 const seal = document.getElementById('seal');
@@ -79,6 +85,7 @@ envelopeTap.addEventListener('click', ()=>{
   seal.classList.add('break');
   bgMusic.play().catch(()=>{});
   setTimeout(()=>{
+    window.scrollTo(0, 0);
     envelopeScreen.classList.add('hide');
     main.classList.add('show');
     spawnPetals(30);
@@ -86,12 +93,26 @@ envelopeTap.addEventListener('click', ()=>{
   }, 700);
 });
 
-/* ---------- Scroll reveal ---------- */
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
-},{threshold:0.2});
-revealEls.forEach(el=>io.observe(el));
+/* ---------- Scroll reveal & indicator ---------- */
+const reveals = document.querySelectorAll('.reveal');
+const scrollIndicator = document.querySelector('.scroll-indicator');
+function checkReveal(){
+  const winHeight = window.innerHeight;
+  reveals.forEach(r=>{
+    const rect = r.getBoundingClientRect();
+    if(rect.top < winHeight - 50) r.classList.add('in');
+  });
+  
+  if (scrollIndicator) {
+    if (window.scrollY > 50) {
+      scrollIndicator.classList.add('hide');
+    } else {
+      scrollIndicator.classList.remove('hide');
+    }
+  }
+}
+window.addEventListener('scroll', checkReveal);
+checkReveal();
 
 /* ---------- Countdown ---------- */
 const weddingDate = new Date('2026-11-13T06:00:00').getTime();
