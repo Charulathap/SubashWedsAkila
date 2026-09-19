@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Marcellus&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 
 <body>
@@ -29,9 +29,15 @@
   <div id="envelopeScreen">
     <div class="envelope-wrap" id="envelopeTap">
       <div class="envelope">
+        <div class="envelope-flap" id="envelopeFlap"></div>
         <div class="seal" id="seal">S ❤ A</div>
       </div>
-      <div class="tap-text">✧ Tap to Open Your Invitation ✧</div>
+      <div class="tap-text" style="display:flex; flex-direction:column; gap:10px;">
+        <span
+          style="font-family:'Great Vibes', cursive; font-size: 2.6rem; text-transform:none; letter-spacing:1px; color:#f6e1a8; animation: none;">A
+          beautiful beginning to a lifetime of love and togetherness</span>
+        <span style="font-size: 0.95rem; opacity: 0.8; letter-spacing: 3px; margin-top:5px;">✧ Tap to Open ✧</span>
+      </div>
     </div>
   </div>
 
@@ -278,40 +284,33 @@
 
   <!-- WhatsApp Modal -->
   <div id="waModal"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:1000; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column; padding:20px; backdrop-filter:blur(5px);">
-    <div class="glass" style="max-width: 600px; width: 100%; padding: 30px; border-radius: 20px; position: relative;">
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:1000; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column; padding:15px; backdrop-filter:blur(5px);">
+    <div class="glass" style="max-width: 600px; width: 100%; max-height: 90vh; padding: 25px 20px; border-radius: 20px; position: relative; display: flex; flex-direction: column;">
       <button id="waClose"
-        style="position:absolute; top:15px; right:20px; background:none; border:none; color:var(--gold-light); font-size:2rem; cursor:pointer; line-height:1;">&times;</button>
-      <h3 class="gold-text serif-title" style="margin-bottom: 15px; text-align: center; font-size:1.8rem;">Send a
-        Blessing</h3>
-      <p style="text-align:center; margin-bottom: 20px; font-size: 1rem; opacity:0.9;">Choose a quote or write your own
-        custom message:</p>
+        style="position:absolute; top:15px; right:20px; background:none; border:none; color:var(--gold-light); font-size:2rem; cursor:pointer; line-height:1; z-index: 10;">&times;</button>
+      <h3 class="gold-text serif-title" style="margin-bottom: 10px; text-align: center; font-size:1.6rem; flex-shrink: 0;">Send a Blessing</h3>
+      <p style="text-align:center; margin-bottom: 15px; font-size: 0.9rem; opacity:0.9; flex-shrink: 0;">Choose a quote or write your own custom message:</p>
 
       <div
-        style="display:flex; flex-direction:column; gap:12px; max-height: 45vh; overflow-y: auto; margin-bottom:20px; padding-right:5px;"
+        style="display:flex; flex-direction:column; gap:8px; overflow-y: auto; margin-bottom:15px; padding-right:5px; flex: 1; min-height: 0;"
         id="waQuoteList">
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:12px 18px; font-size:0.95rem; font-style:italic;">"Two
-          souls with but a single thought, two hearts that beat as one."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Two souls with but a single thought, two hearts that beat as one."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:12px 18px; font-size:0.95rem; font-style:italic;">"May
-          the love you share today grow stronger as you grow old together."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May the love you share today grow stronger as you grow old together."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:12px 18px; font-size:0.95rem; font-style:italic;">"A
-          successful marriage requires falling in love many times, always with the same person."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"A successful marriage requires falling in love many times, always with the same person."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:12px 18px; font-size:0.95rem; font-style:italic;">"May
-          your love story be as magical as your wedding day, and your blessings multiply each year."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"May your love story be as magical as your wedding day, and your blessings multiply each year."</button>
         <button class="btn"
-          style="text-align:left; white-space:normal; height:auto; padding:12px 18px; font-size:0.95rem; font-style:italic;">"Once
-          in a while, right in the middle of an ordinary life, love gives us a fairy tale."</button>
+          style="text-align:left; white-space:normal; height:auto; padding:10px 15px; font-size:0.85rem; font-style:italic;">"Once in a while, right in the middle of an ordinary life, love gives us a fairy tale."</button>
       </div>
 
       <textarea id="waCustomMsg" placeholder="Or type a custom message here..."
-        style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,215,0,0.4); color: #fff; padding: 15px; border-radius: 12px; margin-bottom: 15px; font-family: inherit; font-size:1rem; resize: vertical; min-height: 100px; outline:none;"></textarea>
+        style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,215,0,0.4); color: #fff; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-family: inherit; font-size:0.95rem; resize: vertical; min-height: 70px; flex-shrink: 0; outline:none;"></textarea>
 
       <button id="waSendBtn" class="btn"
-        style="width: 100%; font-size:1.1rem; padding:15px; display:flex; justify-content:center; align-items:center; gap:8px;">
+        style="width: 100%; font-size:1rem; padding:12px; display:flex; justify-content:center; align-items:center; gap:8px; flex-shrink: 0;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 2L11 13"></path>
@@ -325,7 +324,7 @@
   <div id="scrollProgress"></div>
   <button id="musicBtn" title="Play/Pause Music">🎵</button>
 
-  <script src="assets/js/script.js?v=4"></script>
+  <script src="assets/js/script.js?v=5"></script>
 </body>
 
 </html>
