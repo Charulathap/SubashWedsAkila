@@ -154,6 +154,16 @@ window.addEventListener('load', ()=>{
   });
 });
 
+// Stop music if the user backgrounds the app or switches tabs
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    bgMusic.pause();
+  } else {
+    // Attempt to resume when they come back
+    bgMusic.play().catch(()=>{});
+  }
+});
+
 /* ---------- Sparkle cursor trail ---------- */
 let lastSparkle = 0;
 function spawnSparkle(x,y){
