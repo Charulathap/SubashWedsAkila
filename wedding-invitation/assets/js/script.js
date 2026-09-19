@@ -83,7 +83,9 @@ function spawnPetals(count){
 
 envelopeTap.addEventListener('click', ()=>{
   seal.classList.add('break');
-  bgMusic.play().catch(()=>{});
+  bgMusic.play().then(()=>{
+    document.getElementById('musicBtn').classList.remove('muted');
+  }).catch(()=>{});
   setTimeout(()=>{
     window.scrollTo(0, 0);
     envelopeScreen.classList.add('hide');
@@ -148,9 +150,15 @@ setInterval(()=>{
 
 /* ---------- Music control ---------- */
 const musicBtn = document.getElementById('musicBtn');
+musicBtn.classList.add('muted'); // initially muted until played
 musicBtn.addEventListener('click', ()=>{
-  if(bgMusic.paused){ bgMusic.play().catch(()=>{}); musicBtn.textContent='🔊'; }
-  else{ bgMusic.pause(); musicBtn.textContent='🔇'; }
+  if(bgMusic.paused){ 
+    bgMusic.play().catch(()=>{}); 
+    musicBtn.classList.remove('muted'); 
+  } else { 
+    bgMusic.pause(); 
+    musicBtn.classList.add('muted'); 
+  }
 });
 
 /* ---------- Sparkle cursor trail ---------- */
