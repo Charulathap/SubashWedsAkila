@@ -161,6 +161,16 @@ musicBtn.addEventListener('click', ()=>{
   }
 });
 
+// Attempt to play music automatically when the page loads
+window.addEventListener('load', ()=>{
+  bgMusic.play().then(()=>{
+    musicBtn.classList.remove('muted');
+  }).catch(()=>{
+    // Browsers block autoplay unless the user has interacted.
+    console.log("Autoplay blocked. User interaction required.");
+  });
+});
+
 /* ---------- Sparkle cursor trail ---------- */
 let lastSparkle = 0;
 function spawnSparkle(x,y){
