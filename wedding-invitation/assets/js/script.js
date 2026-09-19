@@ -158,16 +158,35 @@ window.addEventListener('scroll', ()=>{
 
 /* ---------- Ending animation trigger ---------- */
 const ending = document.getElementById('ending');
+let fireworkInterval;
+
+const fireworkObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      if(!fireworkInterval) {
+        launchFireworks();
+        fireworkInterval = setInterval(launchFireworks, 2500);
+      }
+    } else {
+      if(fireworkInterval) {
+        clearInterval(fireworkInterval);
+        fireworkInterval = null;
+      }
+    }
+  });
+},{threshold:0.1});
+
 const endObserver = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      ending.style.display='flex';
-      launchFireworks();
-      spawnPetals(20);
-      endObserver.disconnect();
+      if (ending.style.display !== 'flex') {
+        ending.style.display = 'flex';
+        spawnPetals(20);
+        fireworkObserver.observe(ending);
+      }
     }
   });
-},{threshold:0.4});
+},{threshold:0.1});
 endObserver.observe(document.querySelector('footer'));
 
 function launchFireworks(){
@@ -175,8 +194,8 @@ function launchFireworks(){
     setTimeout(()=>{
       const burst = document.createElement('div');
       burst.style.position='fixed';
-      burst.style.left = (20+Math.random()*60)+'vw';
-      burst.style.top = (15+Math.random()*40)+'vh';
+      burst.style.left = (10+Math.random()*80)+'vw';
+      burst.style.top = (10+Math.random()*80)+'vh'; // Spreads above and below
       burst.style.zIndex=45;
       document.body.appendChild(burst);
       for(let j=0;j<18;j++){
@@ -186,7 +205,7 @@ function launchFireworks(){
         spark.style.background = ['#f6e1a8','#f7c6d1','#d4af6a'][j%3];
         burst.appendChild(spark);
         const angle = (j/18)*Math.PI*2;
-        const dist = 60+Math.random()*60;
+        const dist = 60+Math.random()*80;
         spark.animate([
           {transform:'translate(0,0)', opacity:1},
           {transform:`translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px)`, opacity:0}
