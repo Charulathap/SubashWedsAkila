@@ -15,7 +15,33 @@ h1,h2,h3{font-family:'Marcellus', serif; letter-spacing:1px;}
 
 /* Canvas layers */
 #starsCanvas,#particlesCanvas{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;}
-.moon{position:fixed; top:5%; right:7%; width:66px; height:66px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #fffbe8, #f3d9a4 60%, transparent 75%); box-shadow:0 0 55px 18px rgba(243,217,164,0.3); z-index:0; pointer-events:none; opacity:0.75; transition:transform 0.25s ease-out;}
+.moon {
+  position: fixed;
+  top: 5%;
+  right: 7%;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: url('../images/moon.png') no-repeat center center;
+  background-size: cover;
+  box-shadow: 0 0 32px 8px rgba(246, 225, 168, 0.45), 0 0 70px 18px rgba(212, 175, 106, 0.22);
+  filter: drop-shadow(0 0 14px rgba(246, 225, 168, 0.5));
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.92;
+  transition: transform 0.25s ease-out;
+  animation: moonGlow 7s ease-in-out infinite alternate;
+}
+@keyframes moonGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(246, 225, 168, 0.4));
+    box-shadow: 0 0 28px 6px rgba(246, 225, 168, 0.38), 0 0 60px 15px rgba(212, 175, 106, 0.2);
+  }
+  100% {
+    filter: drop-shadow(0 0 22px rgba(246, 225, 168, 0.7));
+    box-shadow: 0 0 45px 12px rgba(246, 225, 168, 0.6), 0 0 85px 25px rgba(212, 175, 106, 0.35);
+  }
+}
 
 /* Cinematic vignette + grain */
 .vignette{position:fixed; inset:0; z-index:5; pointer-events:none; background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 100%);}
