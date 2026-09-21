@@ -262,18 +262,19 @@ window.addEventListener('mousemove', (e)=>{
   if(now - lastSparkle > 60){ spawnSparkle(e.clientX, e.clientY); lastSparkle = now; }
 });
 
-/* ---------- Scroll progress + celestial moon parallax ---------- */
+/* ---------- Scroll progress + dynamic celestial moon scroll ---------- */
 const scrollProgress = document.getElementById('scrollProgress');
 const moonEl = document.getElementById('moon');
 window.addEventListener('scroll', ()=>{
   const h = document.documentElement;
   const maxScroll = h.scrollHeight - h.clientHeight;
-  const pct = maxScroll > 0 ? (h.scrollTop / maxScroll) * 100 : 0;
-  if (scrollProgress) scrollProgress.style.width = pct + '%';
+  const pct = maxScroll > 0 ? (h.scrollTop / maxScroll) : 0;
+  if (scrollProgress) scrollProgress.style.width = (pct * 100) + '%';
   if (moonEl) {
-    // Gentle celestial drift capped at 45px so the moon stays in the sky and never collides with buttons
-    const moonOffset = Math.min(h.scrollTop * 0.02, 45);
-    moonEl.style.transform = `translate3d(0, ${moonOffset}px, 0)`;
+    // Dynamically moves downwards as user scrolls down, and rises back up as user scrolls up
+    const maxTravel = (window.innerHeight || 800) * 0.72;
+    const moonY = pct * maxTravel;
+    moonEl.style.transform = `translate3d(0, ${moonY}px, 0)`;
   }
 }, {passive:true});
 
