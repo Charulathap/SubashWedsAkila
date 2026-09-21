@@ -262,26 +262,46 @@ window.addEventListener('mousemove', (e)=>{
   if(now - lastSparkle > 60){ spawnSparkle(e.clientX, e.clientY); lastSparkle = now; }
 });
 
-/* ---------- Scroll progress + moon parallax ---------- */
+/* ---------- Scroll progress + celestial moon parallax ---------- */
 const scrollProgress = document.getElementById('scrollProgress');
 const moonEl = document.getElementById('moon');
 window.addEventListener('scroll', ()=>{
   const h = document.documentElement;
-  const pct = (h.scrollTop)/(h.scrollHeight - h.clientHeight)*100;
-  scrollProgress.style.width = pct+'%';
-  moonEl.style.transform = `translateY(${h.scrollTop*0.08}px)`;
+  const maxScroll = h.scrollHeight - h.clientHeight;
+  const pct = maxScroll > 0 ? (h.scrollTop / maxScroll) * 100 : 0;
+  if (scrollProgress) scrollProgress.style.width = pct + '%';
+  if (moonEl) {
+    // Gentle celestial drift capped at 45px so the moon stays in the sky and never collides with buttons
+    const moonOffset = Math.min(h.scrollTop * 0.02, 45);
+    moonEl.style.transform = `translate3d(0, ${moonOffset}px, 0)`;
+  }
 }, {passive:true});
 
-/* ---------- Ending animation trigger ---------- */
+/* ---------- Family Tree Line Animation Observer ---------- */
+const treeSides = document.querySelectorAll('.tree-side');
+if (treeSides.length > 0) {
+  const treeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('tree-active');
+      }
+    });
+  }, { threshold: 0.18 });
+
+  treeSides.forEach(side => treeObserver.observe(side));
+}
+
+/* ---------- Ending animation trigger & Back to Top ---------- */
 const ending = document.getElementById('ending');
 let fireworkInterval;
 
 const fireworkObserver = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
+      spawnPetals(14);
       if(!fireworkInterval) {
         launchFireworks();
-        fireworkInterval = setInterval(launchFireworks, 2500);
+        fireworkInterval = setInterval(launchFireworks, 2400);
       }
     } else {
       if(fireworkInterval) {
@@ -290,20 +310,22 @@ const fireworkObserver = new IntersectionObserver((entries)=>{
       }
     }
   });
-},{threshold:0.1});
+},{threshold:0.15});
 
-const endObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      if (ending.style.display !== 'flex') {
-        ending.style.display = 'flex';
-        spawnPetals(20);
-        fireworkObserver.observe(ending);
-      }
-    }
+if (ending) {
+  fireworkObserver.observe(ending);
+}
+
+// Relive Invitation / Back to Top button
+const backToTopBtn = document.getElementById('backToTopBtn');
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
-},{threshold:0.1});
-endObserver.observe(document.querySelector('footer'));
+}
 
 function launchFireworks(){
   for(let i=0;i<5;i++){
