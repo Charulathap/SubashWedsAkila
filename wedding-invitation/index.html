@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Marcellus&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=17">
+  <link rel="stylesheet" href="assets/css/style.css?v=24">
 </head>
 
 <body>
@@ -29,16 +29,90 @@
   <!-- ENVELOPE SCREEN -->
   <div id="envelopeScreen">
     <div class="envelope-wrap" id="envelopeTap">
-      <div style="margin-bottom: 40px; padding: 0 20px;">
-        <span
-          style="font-size: 1.5rem; text-transform:none; letter-spacing:1.5px; color:#f6e1a8; line-height: 1.4; display:block;">A
-          beautiful beginning to a lifetime of love and togetherness</span>
+      <div class="envelope-header-text">
+        <span class="envelope-subtext">A beautiful beginning to a lifetime of love and togetherness</span>
       </div>
-      <div class="envelope">
-        <div class="seal" id="seal">S ❤ A</div>
+
+      <div class="envelope-container" id="envelopeContainer">
+        <!-- Postal Stamp & Postmark badge -->
+        <div class="post-stamp" id="postStamp">
+          <div class="post-stamp-inner">
+            <svg class="stamp-ring-svg" viewBox="0 0 32 32" width="22" height="22" fill="none">
+              <defs>
+                <linearGradient id="stampGoldGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff8e7"/>
+                  <stop offset="50%" stop-color="#d4af6a"/>
+                  <stop offset="100%" stop-color="#a07429"/>
+                </linearGradient>
+              </defs>
+              <circle cx="12" cy="18" r="7" stroke="url(#stampGoldGrad)" stroke-width="2" fill="none"/>
+              <circle cx="20" cy="14" r="7" stroke="url(#stampGoldGrad)" stroke-width="2" fill="none"/>
+              <polygon points="20,4 22,7 25,7 23,9 24,12 20,10 16,12 17,9 15,7 18,7" fill="url(#stampGoldGrad)"/>
+            </svg>
+            <span class="stamp-val">13.11</span>
+          </div>
+          <div class="post-mark">
+            <svg width="60" height="60" viewBox="0 0 64 64" class="postmark-svg">
+              <!-- Outer decorative dashed cancellation circle -->
+              <circle cx="32" cy="32" r="29" stroke="#ffe5ab" stroke-width="1.8" fill="rgba(25, 14, 5, 0.45)" stroke-dasharray="3.5 2" />
+              <!-- Inner ring -->
+              <circle cx="32" cy="32" r="23" stroke="#ffd175" stroke-width="1.2" fill="none" />
+              <!-- High-contrast bold typography -->
+              <text x="32" y="21" text-anchor="middle" font-family="'Marcellus', serif" font-size="7.5" font-weight="700" fill="#ffffff" letter-spacing="1.5">ROYAL POST</text>
+              <text x="32" y="32" text-anchor="middle" font-family="'Marcellus', serif" font-size="7" font-weight="700" fill="#ffe5ab" letter-spacing="1">13 · NOV · 2026</text>
+              <text x="32" y="42" text-anchor="middle" font-family="'Marcellus', serif" font-size="6" font-weight="700" fill="#ffd175" letter-spacing="1.2">★ WEDDING ★</text>
+              <!-- Cancellation postal waves -->
+              <path d="M-8 27 Q2 23 12 27 T32 27" stroke="#ffe5ab" stroke-width="1.4" fill="none" opacity="0.85" />
+              <path d="M-8 33 Q2 29 12 33 T32 33" stroke="#ffe5ab" stroke-width="1.4" fill="none" opacity="0.85" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="envelope-body" id="envelopeBody">
+          <!-- Back Interior with rich damask gold glow -->
+          <div class="envelope-back">
+            <div class="envelope-lining"></div>
+          </div>
+
+          <!-- The Invitation Card Letter that slides out! -->
+          <div class="invitation-letter" id="invitationLetter">
+            <div class="letter-shimmer"></div>
+            <div class="letter-corner lt"></div>
+            <div class="letter-corner rt"></div>
+            <div class="letter-corner lb"></div>
+            <div class="letter-corner rb"></div>
+            <div class="letter-crest">✦ ⚭ ✦</div>
+            <div class="letter-title">Wedding Invitation</div>
+            <div class="letter-couple">Subash &amp; Akila</div>
+            <div class="letter-date">Friday, 13 November 2026</div>
+            <div class="letter-tag">Subha Muhurtham</div>
+          </div>
+
+          <!-- Side Flaps -->
+          <div class="envelope-flap-left"></div>
+          <div class="envelope-flap-right"></div>
+          
+          <!-- Bottom Flap -->
+          <div class="envelope-flap-bottom"></div>
+
+          <!-- 3D Top Flap that flips open! -->
+          <div class="envelope-flap-top" id="envelopeFlapTop"></div>
+
+          <!-- Wax Seal positioned over the flap -->
+          <div class="seal" id="seal">
+            <div class="seal-inner">
+              <div class="seal-initials">
+                <span class="s-letter">S</span>
+                <span class="s-heart">❤</span>
+                <span class="s-letter">A</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="tap-text">
-        <span style="font-size: 0.95rem; opacity: 0.8; letter-spacing: 3px;">✧ Tap to Open ✧</span>
+        <span class="tap-hint">✧ Tap to Open Invitation ✧</span>
       </div>
     </div>
   </div>
@@ -101,25 +175,157 @@
         <div class="line right"></div>
       </div>
       <div class="cards-grid">
+        <!-- Card 1: Wedding Date -->
         <div class="glass event-card reveal">
-          <div class="icon">🗓️</div>
-          <h3>Wedding Date</h3>
-          <p>Friday, 13 November 2026</p>
+          <span class="corner corner-tl"></span>
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <span class="corner corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-svg" viewBox="0 0 48 48" width="34" height="34" fill="none">
+              <defs>
+                <linearGradient id="goldIconDate" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff4d0"/>
+                  <stop offset="50%" stop-color="#d4af6a"/>
+                  <stop offset="100%" stop-color="#9a7028"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="10" width="36" height="32" rx="6" stroke="url(#goldIconDate)" stroke-width="2.2" fill="rgba(212,175,106,0.06)"/>
+              <line x1="6" y1="20" x2="42" y2="20" stroke="url(#goldIconDate)" stroke-width="2"/>
+              <circle cx="15" cy="8" r="2.5" fill="url(#goldIconDate)"/>
+              <circle cx="33" cy="8" r="2.5" fill="url(#goldIconDate)"/>
+              <line x1="15" y1="5" x2="15" y2="10" stroke="url(#goldIconDate)" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="33" y1="5" x2="33" y2="10" stroke="url(#goldIconDate)" stroke-width="2.5" stroke-linecap="round"/>
+              <text x="24" y="34" text-anchor="middle" font-family="'Marcellus', serif" font-size="12" font-weight="700" fill="url(#goldIconDate)">13</text>
+              <circle cx="24" cy="30" r="9" stroke="url(#goldIconDate)" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
+            </svg>
+          </div>
+          <span class="event-tag">Auspicious Day</span>
+          <h3 class="event-title gold-text">Wedding Date</h3>
+          <div class="card-ornament"><span></span>✦<span></span></div>
+          <div class="event-val">Friday, 13 Nov 2026</div>
+          <p class="event-sub">Subhakrithu Varusham · Karthigai</p>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Subash+%26+Akila+Wedding&dates=20261113T003000Z/20261113T083000Z&details=Wedding+Ceremony+%26+Reception+of+Subash+%26+Akila&location=Sri+Velavar+Thirumana+Mandabam,+Udumalai+Road,+Tharapuram"
+             target="_blank" rel="noopener noreferrer" class="card-action-btn" title="Add to Google Calendar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z"></path><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="12" y1="14" x2="12" y2="18"></line><line x1="10" y1="16" x2="14" y2="16"></line></svg>
+            Add to Calendar
+          </a>
         </div>
+
+        <!-- Card 2: Muhurtham Time -->
         <div class="glass event-card reveal">
-          <div class="icon">⏰</div>
-          <h3>Time</h3>
-          <p>6:00 AM to 7:30 AM</p>
+          <span class="corner corner-tl"></span>
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <span class="corner corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-svg" viewBox="0 0 48 48" width="34" height="34" fill="none">
+              <defs>
+                <linearGradient id="goldIconTime" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff4d0"/>
+                  <stop offset="50%" stop-color="#d4af6a"/>
+                  <stop offset="100%" stop-color="#9a7028"/>
+                </linearGradient>
+              </defs>
+              <circle cx="24" cy="26" r="17" stroke="url(#goldIconTime)" stroke-width="2.2" fill="rgba(212,175,106,0.06)"/>
+              <circle cx="24" cy="26" r="14" stroke="url(#goldIconTime)" stroke-width="0.8" stroke-dasharray="1 3"/>
+              <path d="M20 9 C20 6, 28 6, 28 9" stroke="url(#goldIconTime)" stroke-width="2" stroke-linecap="round"/>
+              <rect x="22" y="7" width="4" height="2.5" rx="1" fill="url(#goldIconTime)"/>
+              <line x1="24" y1="26" x2="24" y2="15" stroke="url(#goldIconTime)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="24" y1="26" x2="24" y2="34" stroke="url(#goldIconTime)" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="24" cy="26" r="2.2" fill="url(#goldIconTime)"/>
+              <circle cx="24" cy="12" r="1" fill="url(#goldIconTime)"/>
+              <circle cx="38" cy="26" r="1" fill="url(#goldIconTime)"/>
+              <circle cx="24" cy="40" r="1" fill="url(#goldIconTime)"/>
+              <circle cx="10" cy="26" r="1" fill="url(#goldIconTime)"/>
+            </svg>
+          </div>
+          <span class="event-tag">Subha Muhurtham</span>
+          <h3 class="event-title gold-text">Auspicious Time</h3>
+          <div class="card-ornament"><span></span>✦<span></span></div>
+          <div class="event-val">6:00 AM to 7:30 AM</div>
+          <p class="event-sub">Early Morning Sacred Hours</p>
+          <div class="event-status-pill">✨ Subha Lagnam</div>
         </div>
+
+        <!-- Card 3: Venue -->
         <div class="glass event-card reveal">
-          <div class="icon">🏛️</div>
-          <h3>Venue</h3>
-          <p>Sri Velavar Thirumana Mandabam,<br>Udumalai Road, Tharapuram</p>
+          <span class="corner corner-tl"></span>
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <span class="corner corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-svg" viewBox="0 0 48 48" width="34" height="34" fill="none">
+              <defs>
+                <linearGradient id="goldIconVenue" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff4d0"/>
+                  <stop offset="50%" stop-color="#d4af6a"/>
+                  <stop offset="100%" stop-color="#9a7028"/>
+                </linearGradient>
+              </defs>
+              <path d="M24 4 L22 8 L26 8 Z" fill="url(#goldIconVenue)"/>
+              <circle cx="24" cy="3" r="1.5" fill="url(#goldIconVenue)"/>
+              <path d="M14 15 C18 11, 30 11, 34 15 L38 18 H10 Z" stroke="url(#goldIconVenue)" stroke-width="2" fill="rgba(212,175,106,0.1)"/>
+              <path d="M18 11 C21 8.5, 27 8.5, 30 11 Z" stroke="url(#goldIconVenue)" stroke-width="1.6" fill="none"/>
+              <rect x="7" y="18" width="34" height="3" rx="1.5" fill="url(#goldIconVenue)"/>
+              <line x1="11" y1="21" x2="11" y2="39" stroke="url(#goldIconVenue)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="21" x2="19" y2="39" stroke="url(#goldIconVenue)" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="29" y1="21" x2="29" y2="39" stroke="url(#goldIconVenue)" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="37" y1="21" x2="37" y2="39" stroke="url(#goldIconVenue)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M19 39 V28 C19 25, 29 25, 29 28 V39" stroke="url(#goldIconVenue)" stroke-width="1.8" fill="rgba(212,175,106,0.15)"/>
+              <rect x="6" y="39" width="36" height="3" rx="1" fill="url(#goldIconVenue)"/>
+              <line x1="4" y1="44" x2="44" y2="44" stroke="url(#goldIconVenue)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="event-tag">Sacred Mandapam</span>
+          <h3 class="event-title gold-text">The Venue</h3>
+          <div class="card-ornament"><span></span>✦<span></span></div>
+          <div class="event-val venue-title">Sri Velavar Thirumana Mandabam</div>
+          <p class="event-sub">Udumalai Road, Tharapuram</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sri+Velavar+Thirumana+Mandabam+Udumalai+Road+Tharapuram"
+             target="_blank" rel="noopener noreferrer" class="card-action-btn" title="Open in Google Maps">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Get Directions
+          </a>
         </div>
+
+        <!-- Card 4: Reception -->
         <div class="glass event-card reveal">
-          <div class="icon">🎊</div>
-          <h3>Reception</h3>
-          <p>After 8:30 AM · Same Venue</p>
+          <span class="corner corner-tl"></span>
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <span class="corner corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-svg" viewBox="0 0 48 48" width="34" height="34" fill="none">
+              <defs>
+                <linearGradient id="goldIconRec" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff4d0"/>
+                  <stop offset="50%" stop-color="#d4af6a"/>
+                  <stop offset="100%" stop-color="#9a7028"/>
+                </linearGradient>
+              </defs>
+              <path d="M24 6 C25.5 9, 28 13, 28 16 C28 18.5, 26 20.5, 24 20.5 C22 20.5, 20 18.5, 20 16 C20 13, 22.5 9, 24 6 Z" fill="url(#goldIconRec)"/>
+              <circle cx="24" cy="15" r="2" fill="#fff9ea"/>
+              <path d="M10 26 C10 32, 17 35, 24 35 C31 35, 38 32, 38 26 C37 23, 11 23, 10 26 Z" stroke="url(#goldIconRec)" stroke-width="2" fill="rgba(212,175,106,0.15)"/>
+              <path d="M22 35 L20 42 H28 L26 35 Z" fill="url(#goldIconRec)"/>
+              <ellipse cx="24" cy="43" rx="12" ry="2.5" stroke="url(#goldIconRec)" stroke-width="1.8" fill="rgba(212,175,106,0.2)"/>
+              <line x1="24" y1="2" x2="24" y2="4" stroke="url(#goldIconRec)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="31" y1="8" x2="29" y2="10" stroke="url(#goldIconRec)" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="17" y1="8" x2="19" y2="10" stroke="url(#goldIconRec)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="34" cy="18" r="1" fill="url(#goldIconRec)"/>
+              <circle cx="14" cy="18" r="1" fill="url(#goldIconRec)"/>
+            </svg>
+          </div>
+          <span class="event-tag">Grand Celebration</span>
+          <h3 class="event-title gold-text">Reception</h3>
+          <div class="card-ornament"><span></span>✦<span></span></div>
+          <div class="event-val">After 8:30 AM</div>
+          <p class="event-sub">Same Venue · Followed by Feast</p>
+          <div class="event-status-pill">🎉 Feast &amp; Blessings</div>
         </div>
       </div>
     </section>
@@ -284,7 +490,9 @@
       style="max-width: 600px; width: 100%; max-height: 90vh; padding: 25px 20px; border-radius: 20px; position: relative; display: flex; flex-direction: column;">
       <button id="waClose"
         style="position:absolute; top:15px; right:20px; background:none; border:none; color:var(--gold-light); font-size:2rem; cursor:pointer; line-height:1; z-index: 10;">&times;</button>
-      <h3 class="gold-text serif-title"
+      
+      <div id="waContentWrapper" style="display:flex; flex-direction:column; flex:1; min-height:0;">
+        <h3 class="gold-text serif-title"
         style="margin-bottom: 10px; text-align: center; font-size:1.6rem; flex-shrink: 0;">Send a Blessing</h3>
       <p style="text-align:center; margin-bottom: 15px; font-size: 0.9rem; opacity:0.9; flex-shrink: 0;">Choose a quote
         or write your own custom message:</p>
@@ -321,12 +529,20 @@
         </svg>
         Send to WhatsApp
       </button>
+      </div>
+      
+      <div id="waLoader" class="wa-loader">
+        <div class="ring-loader">
+          <div class="heart">💛</div>
+        </div>
+        <p class="gold-text" style="font-size: 1.1rem; letter-spacing: 1px; margin-top:20px; text-align:center;">Sending your wishes...</p>
+      </div>
     </div>
   </div>
 
   <div id="scrollProgress"></div>
 
-  <script src="assets/js/script.js?v=17"></script>
+  <script src="assets/js/script.js?v=24"></script>
 </body>
 
 </html>

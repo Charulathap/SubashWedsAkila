@@ -60,37 +60,121 @@ const seal = document.getElementById('seal');
 const main = document.getElementById('main');
 const bgMusic = document.getElementById('bgMusic');
 
+function spawnSealBurst(x, y) {
+  const count = 32;
+  const colors = ['#f6e1a8', '#d4af6a', '#ff4d6d', '#ffd700', '#ffffff', '#e6284e'];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'seal-spark';
+    const angle = (i / count) * 2 * Math.PI + (Math.random() - 0.5) * 0.4;
+    const distance = 50 + Math.random() * 120;
+    const size = 4 + Math.random() * 6;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    p.style.left = (x - size / 2) + 'px';
+    p.style.top = (y - size / 2) + 'px';
+    p.style.borderRadius = Math.random() > 0.4 ? '50%' : '2px';
+    p.style.boxShadow = `0 0 12px ${p.style.backgroundColor}`;
+    document.body.appendChild(p);
+
+    const destX = Math.cos(angle) * distance;
+    const destY = Math.sin(angle) * distance + (Math.random() * 30);
+
+    p.animate([
+      { transform: 'translate(0, 0) scale(1.6)', opacity: 1 },
+      { transform: `translate(${destX}px, ${destY}px) scale(0.1)`, opacity: 0 }
+    ], {
+      duration: 650 + Math.random() * 400,
+      easing: 'cubic-bezier(0.12, 0.8, 0.32, 1)'
+    });
+
+    setTimeout(() => p.remove(), 1100);
+  }
+}
+
 function spawnPetals(count){
-  const emojis = ['🌸','🌺','🌼','💮'];
+  const emojis = ['🌸','🌺','🌼','💮','✨','💛'];
   for(let i=0;i<count;i++){
     setTimeout(()=>{
       const p = document.createElement('div');
       p.className='petal';
       p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
       p.style.left = Math.random()*100+'vw';
-      p.style.fontSize = (14+Math.random()*16)+'px';
+      p.style.fontSize = (14+Math.random()*18)+'px';
       document.body.appendChild(p);
-      const duration = 4000+Math.random()*3000;
+      const duration = 3800+Math.random()*2600;
       p.animate([
         {transform:`translateY(-10vh) rotate(0deg)`, opacity:0},
         {transform:`translateY(50vh) translateX(${(Math.random()-0.5)*100}px) rotate(180deg)`, opacity:1, offset:0.5},
         {transform:`translateY(110vh) translateX(${(Math.random()-0.5)*200}px) rotate(360deg)`, opacity:0}
       ], {duration, easing:'ease-in-out'});
       setTimeout(()=>p.remove(), duration);
-    }, i*120);
+    }, i*100);
   }
 }
 
-envelopeTap.addEventListener('click', ()=>{
-  seal.classList.add('break');
-  bgMusic.play().catch(()=>{});
-  setTimeout(()=>{
+let envelopeOpened = false;
+envelopeTap.addEventListener('click', (e) => {
+  if (envelopeOpened) return;
+  envelopeOpened = true;
+
+  // 1. Get seal center for radial spark burst
+  const rect = seal.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  spawnSealBurst(centerX, centerY);
+
+  // 2. Play background music immediately
+  bgMusic.play().catch(() => {});
+
+  // 3. Crack and shatter the seal & remove the corner stickers
+  seal.classList.add('broken');
+  const tapText = document.querySelector('.tap-text');
+  if (tapText) tapText.style.opacity = '0';
+  const postStamp = document.getElementById('postStamp');
+  if (postStamp) postStamp.classList.add('hide');
+
+  // 4. Open 3D top flap (rotates backward)
+  setTimeout(() => {
+    const flapTop = document.getElementById('envelopeFlapTop');
+    if (flapTop) flapTop.classList.add('open');
+  }, 220);
+
+  // 5. Slide invitation card up out of envelope cavity
+  setTimeout(() => {
+    const letter = document.getElementById('invitationLetter');
+    if (letter) letter.classList.add('slide-out');
+  }, 620);
+
+  // 6. Shower celebration petals and golden sparkles
+  setTimeout(() => {
+    spawnPetals(35);
+  }, 950);
+
+  // 7. Small card itself expands to occupy the ENTIRE screen!
+  setTimeout(() => {
+    const container = document.getElementById('envelopeContainer');
+    const wrap = document.getElementById('envelopeTap');
+    if (container) {
+      container.style.perspective = 'none';
+      container.style.transform = 'none';
+    }
+    if (wrap) {
+      wrap.style.animation = 'none';
+      wrap.style.transform = 'none';
+    }
+    const letter = document.getElementById('invitationLetter');
+    if (letter) letter.classList.add('cover-screen');
+  }, 1300);
+
+  // 8. Seamless dissolve into the scrollable wedding invitation!
+  setTimeout(() => {
     window.scrollTo(0, 0);
     envelopeScreen.classList.add('hide');
     main.classList.add('show');
-    spawnPetals(30);
-    document.body.style.overflow='auto';
-  }, 700);
+    document.body.style.overflow = 'auto';
+  }, 2500);
 });
 
 /* ---------- Scroll reveal & indicator ---------- */
@@ -293,10 +377,24 @@ waSendBtn.addEventListener('click', () => {
     return;
   }
   
-  const waUrl = `https://wa.me/${currentWaNumber}?text=${encodeURIComponent(msg)}`;
-  window.open(waUrl, '_blank');
+  // Show animated loader
+  document.getElementById('waContentWrapper').style.display = 'none';
+  document.getElementById('waLoader').style.display = 'flex';
   
-  waModal.style.display = 'none';
-  document.body.style.overflow = 'auto';
+  const waUrl = `https://wa.me/${currentWaNumber}?text=${encodeURIComponent(msg)}`;
+  
+  // Wait 2.5 seconds to engage the user with the animation
+  setTimeout(() => {
+    // Open in same tab so mobile doesn't trigger a refresh when switching back
+    window.location.href = waUrl;
+    
+    // Reset modal state in the background
+    setTimeout(() => {
+      waModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.getElementById('waContentWrapper').style.display = 'flex';
+      document.getElementById('waLoader').style.display = 'none';
+    }, 500);
+  }, 2500);
 });
 
