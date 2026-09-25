@@ -387,7 +387,7 @@ waClose.addEventListener('click', () => {
 if(waQuoteList) {
   waQuoteList.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
-      waCustomMsg.value = btn.textContent;
+      waCustomMsg.value = btn.textContent.trim().replace(/\s+/g, ' ');
     });
   });
 }

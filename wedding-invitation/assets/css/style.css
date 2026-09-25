@@ -605,9 +605,61 @@ section{position:relative; padding:15px 20px; max-width:1100px; margin:0 auto; t
 }
 
 /* Couple */
-.couple-names{font-size:clamp(2.2rem,7vw,4.5rem); font-family:'Great Vibes',cursive; margin:18px 0;}
-.couple-names .name-text{font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:700; letter-spacing:1px;}
-.amp{font-size:2rem; color:var(--pink); margin:6px 0;}
+.couple-names {
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-family: 'Great Vibes', cursive;
+  margin: 10px 0 0;
+  line-height: 1.1;
+}
+.couple-names .name-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.couple-profession {
+  font-family: 'Marcellus', serif;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+/* Weds ornamental divider */
+.weds-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 22px auto 18px;
+  max-width: 340px;
+}
+.weds-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,106,0.6), transparent);
+}
+.weds-badge {
+  padding: 6px 22px;
+  border: none;
+  border-radius: 40px;
+  background: rgba(212,175,106,0.1);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 18px rgba(212,175,106,0.25), inset 0 0 10px rgba(212,175,106,0.1);
+}
+.weds-inner {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  text-shadow: 0 0 14px rgba(243,217,164,0.7), 0 2px 8px rgba(0,0,0,0.5);
+  display: block;
+  line-height: 1.1;
+}
+
 .reveal{opacity:0; transform:translateY(40px); transition:all 0.9s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1; transform:translateY(0);}
 
