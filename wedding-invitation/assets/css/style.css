@@ -2,10 +2,19 @@
   --gold:#d4af6a; --gold-light:#f3d9a4; --ivory:#fdf6ec; --pink:#f7c6d1; --deep:#1a1108; --deep2:#241708;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Cormorant Garamond', serif; background:var(--deep); color:var(--ivory);
-  overflow-x:hidden; background:radial-gradient(ellipse at top, #2a1a0a, #0d0803 70%);
+html {
+  scroll-behavior: smooth;
+  background-color: #050301;
+}
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #050301;
+  background-image: radial-gradient(ellipse at top, #2a1a0a, #0d0803 70%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--ivory);
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 .serif-title{font-family:'Great Vibes', cursive;}
 h1,h2,h3{font-family:'Marcellus', serif; letter-spacing:1px;}
@@ -1243,17 +1252,24 @@ footer{padding:25px 20px; text-align:center; position:relative; z-index:2;}
   margin-bottom: 12px;
 }
 .ending-heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic;
   font-size: clamp(2.4rem, 6.5vw, 4.2rem) !important;
+  letter-spacing: 2px;
+  font-weight: 600;
   line-height: 1.15;
   margin-bottom: 12px;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.9));
 }
 .ending-couple-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  color: #f6e1a8;
+  font-family: 'Marcellus', serif;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-light);
   line-height: 1.1;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  opacity: 0.9;
   text-shadow: 0 0 25px rgba(243, 217, 164, 0.6);
 }
 .ending-ornament {

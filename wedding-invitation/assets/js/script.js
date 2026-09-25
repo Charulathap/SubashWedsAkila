@@ -174,6 +174,17 @@ envelopeTap.addEventListener('click', (e) => {
     envelopeScreen.classList.add('hide');
     main.classList.add('show');
     document.body.style.overflow = 'auto';
+
+    // After the 1.2s fade-out transition completes, fully remove the
+    // cover-screen letter so its white background can't bleed through during scroll
+    setTimeout(() => {
+      const letter = document.getElementById('invitationLetter');
+      if (letter) {
+        letter.style.display = 'none';
+        letter.style.visibility = 'hidden';
+      }
+      envelopeScreen.style.display = 'none';
+    }, 1300);
   }, 2500);
 });
 
